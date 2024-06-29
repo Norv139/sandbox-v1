@@ -1,1 +1,0 @@
-docker-compose --env-file _.env --file docker-compose.main.yml up -d --build

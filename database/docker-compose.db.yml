@@ -5,7 +5,7 @@ services:
       POSTGRES_DB: ${STORE_DB}
       POSTGRES_USER: ${STORE_DB_USER}
       POSTGRES_PASSWORD: ${STORE_DB_PASSWORD}
-    volumes:
-    - ./dump:/docker-entrypoint-initdb.d
     ports:
       - "${STORE_DB_EXTERNAL_PORT}:${STORE_DB_PORT}"
+    volumes:
+    - ./dump:/docker-entrypoint-initdb.d
