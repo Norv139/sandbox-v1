@@ -14,6 +14,7 @@ docker-rmi:
 	-docker rmi -f ${IMAGES}
 docker-clear:
 	-docker stop $(shell docker ps -a -q)
+	-docker rm $(shell docker ps -a -q)
 	-docker rmi -f $(shell docker images -aq)
 	-docker volume rm $(shell docker volume ls -q)
 
