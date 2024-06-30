@@ -1,4 +1,4 @@
-# Tamplate
+# Template
 text
 
 ## instructions
