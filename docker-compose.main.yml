@@ -1,2 +1,5 @@
-include:
-  - database/docker-compose.db.yml
+services:
+  db:
+    extends:
+      file: database/docker-compose.db.yml
+      service: db

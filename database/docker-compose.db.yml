@@ -1,5 +1,5 @@
 services:
-  database-pg:
+  db:
     image: postgres:15.4-alpine3.18
     environment:
       POSTGRES_DB: ${STORE_DB}
@@ -8,4 +8,4 @@ services:
     ports:
       - "${STORE_DB_EXTERNAL_PORT}:${STORE_DB_PORT}"
     volumes:
-    - ./dump:/docker-entrypoint-initdb.d
+      - ./dump:/docker-entrypoint-initdb.d
