@@ -1,5 +1,9 @@
 services:
-  db:
+  pgdb:
     extends:
       file: database/docker-compose.db.yml
-      service: db
+      service: pgdb
+  mongodb:
+    extends:
+      file: database/docker-compose.db.yml
+      service: mongodb

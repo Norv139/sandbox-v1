@@ -1,11 +1,20 @@
 services:
-  db:
+  pgdb:
     image: postgres:15.4-alpine3.18
     environment:
-      POSTGRES_DB: ${STORE_DB}
-      POSTGRES_USER: ${STORE_DB_USER}
-      POSTGRES_PASSWORD: ${STORE_DB_PASSWORD}
+      POSTGRES_DB: ${STORE_PG_DB}
+      POSTGRES_USER: ${STORE_PG_DB_USER}
+      POSTGRES_PASSWORD: ${STORE_PG_DB_PASSWORD}
     ports:
-      - "${STORE_DB_EXTERNAL_PORT}:${STORE_DB_PORT}"
+      - "${STORE_PG_DB_EXTERNAL_PORT}:${STORE_PG_DB_PORT}"
     volumes:
       - ./dump:/docker-entrypoint-initdb.d
+
+  mongodb:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${STORE_MDB_DB_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${STORE_MDB_DB_PASSWORD}
+      MONGO_INITDB_DATABASE: ${STORE_MDB_DB}
+    ports:
+      - "${STORE_MDB_DB_EXTERNAL_PORT}:${STORE_MDB_DB_PORT}"

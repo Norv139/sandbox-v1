@@ -5,6 +5,8 @@ FILES := --file docker-compose.main.yml
 FLAGS := ${ENV} ${FILES}
 IMAGES := $(shell ${DOCKER} ${FLAGS} images -q)
 
+setup-env:
+	 shell grep -v '^#' _.env | xargs export
 docker-up:
 	${DOCKER} ${FLAGS} up -d --build
 docker-down:
@@ -12,6 +14,10 @@ docker-down:
 docker-rmi:
 	-${DOCKER} ${FLAGS} down
 	-docker rmi -f ${IMAGES}
+
+docker-stop:
+	-docker stop $(shell docker ps -a -q)
+	-docker rm $(shell docker ps -a -q)
 docker-clear:
 	-docker stop $(shell docker ps -a -q)
 	-docker rm $(shell docker ps -a -q)
