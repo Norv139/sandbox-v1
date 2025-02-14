@@ -39,7 +39,7 @@ VALUES
     ('Vlad', NULL);
 
 insert into message ("user", "text") 
-VALUES 
+VALUES
     ((select uid from users u where name = 'Nik'), 'HI'),
     ((select uid from users u where name = 'Eva'), 'HI'),
     ((select uid from users u where name = 'Vlad'), 'Не понял');
